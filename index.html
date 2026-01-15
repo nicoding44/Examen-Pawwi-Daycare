@@ -3,45 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Certificación Pawwi Daycare</title>
+    <title>Plataforma Educativa Pawwi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            // TUS CREDENCIALES REALES (Ya configuradas)
+            // Inicialización de EmailJS
             emailjs.init("lqOGtKO0YTxycmgYU"); 
         })();
     </script>
     
     <style>
-        /* --- 🎨 PALETA DE COLORES PAWWI (Flat Design) --- */
+        /* --- 🎨 SYSTEM DESIGN PAWWI --- */
         :root {
-            /* Colores de Marca (Ajusta los HEX si es necesario) */
-            --pawwi-purple: #6B46C1;    /* Morado Principal (Botones, Títulos) */
-            --pawwi-pink: #ED64A6;      /* Rosado (Acentos, Barra de progreso, Iconos) */
-            --pawwi-cream: #FFFAF0;     /* Crema (Fondo de la App) */
-            
-            /* Colores Funcionales */
-            --bg-card: #FFFFFF;         /* Blanco puro para las tarjetas de lectura */
-            --text-main: #2D3748;       /* Texto oscuro legible */
-            --text-light: #718096;      /* Texto secundario */
-            --border-color: #E2E8F0;    /* Bordes sutiles */
-            
-            --success-bg: #F0FFF4;      /* Fondo verde suave (Correcto) */
-            --success-text: #2F855A;    /* Texto verde (Correcto) */
-            --error-bg: #FFF5F5;        /* Fondo rojo suave (Incorrecto) */
-            --error-text: #C53030;      /* Texto rojo (Incorrecto) */
-
-            --radius: 16px;             /* Bordes redondeados consistentes */
+            --pawwi-purple: #6B46C1;
+            --pawwi-dark-purple: #553C9A;
+            --pawwi-pink: #ED64A6;
+            --pawwi-cream: #FFFAF0;
+            --bg-card: #FFFFFF;
+            --text-main: #2D3748;
+            --text-light: #718096;
+            --border-color: #E2E8F0;
+            --success-bg: #F0FFF4;
+            --success-text: #2F855A;
+            --error-bg: #FFF5F5;
+            --error-text: #C53030;
+            --radius: 16px;
+            --shadow: 0 4px 20px rgba(107, 70, 193, 0.08);
         }
 
-        /* Reset y Base */
+        /* Base & Reset */
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--pawwi-cream); /* Fondo Crema */
+            background-color: var(--pawwi-cream);
             color: var(--text-main);
             margin: 0;
             padding: 20px 15px;
@@ -51,37 +48,27 @@
             min-height: 100vh;
         }
 
+        /* Layout Principal */
         .container {
             background: var(--bg-card);
             width: 100%;
-            max-width: 550px;
+            max-width: 600px; /* Un poco más ancho para los videos */
             padding: 35px 25px;
             border-radius: var(--radius);
-            /* Sombra suave para separar del fondo crema */
-            box-shadow: 0 4px 20px rgba(107, 70, 193, 0.08); 
+            box-shadow: var(--shadow);
             text-align: center;
             border: 1px solid rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
         }
 
         /* Tipografía */
-        h1 { 
-            color: var(--pawwi-purple); 
-            margin-bottom: 10px; 
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        h2 {
-            font-weight: 700;
-            color: var(--text-main);
-            line-height: 1.3;
-        }
-        p { 
-            margin-bottom: 25px; 
-            line-height: 1.6; 
-            color: var(--text-light);
-        }
+        h1 { color: var(--pawwi-purple); margin-bottom: 10px; font-weight: 800; letter-spacing: -0.5px; }
+        h2 { font-weight: 700; color: var(--text-main); line-height: 1.3; font-size: 1.25rem; }
+        h3 { color: var(--pawwi-purple); font-size: 1rem; margin: 0; }
+        p { margin-bottom: 25px; line-height: 1.6; color: var(--text-light); }
+        small { font-size: 0.8em; color: var(--text-light); }
 
-        /* Inputs (Campos de texto) */
+        /* Formularios */
         input {
             width: 100%;
             padding: 16px;
@@ -93,67 +80,95 @@
             background-color: #FCFCFC;
             transition: border-color 0.2s;
         }
-        input:focus {
-            border-color: var(--pawwi-purple);
-            outline: none;
-            background-color: #fff;
-        }
+        input:focus { border-color: var(--pawwi-purple); outline: none; background-color: #fff; }
 
-        /* Botón Principal (Morado Sólido - Sin Degradado) */
+        /* Botones */
         .main-btn {
             background-color: var(--pawwi-purple);
             color: white;
             border: none;
-            padding: 18px 30px;
+            padding: 16px 24px;
             border-radius: 12px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: background-color 0.2s, transform 0.1s;
-            margin-top: 20px;
+            margin-top: 15px;
             width: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .main-btn:hover { background-color: var(--pawwi-dark-purple); }
+        .main-btn:active { transform: scale(0.98); }
+        .main-btn.secondary { background-color: transparent; border: 2px solid var(--pawwi-purple); color: var(--pawwi-purple); }
+        .main-btn.secondary:hover { background-color: #FAF5FF; }
+
+        /* --- DASHBOARD DE VIDEOS --- */
+        .module-grid {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .module-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            background: white;
         }
 
-        .main-btn:hover { background-color: #553C9A; } /* Un tono más oscuro al pasar mouse */
-        .main-btn:active { transform: scale(0.98); }
-        .main-btn:disabled { background-color: #CBD5E0; cursor: not-allowed; }
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: var(--pawwi-purple);
+        }
 
-        /* Utilidades */
-        .hidden { display: none !important; }
+        .module-info { flex: 1; padding-right: 10px; }
+        .module-status { 
+            font-size: 1.2rem; 
+            color: var(--border-color); /* Por defecto gris */
+        }
+        .module-card.watched .module-status { color: var(--success-text); }
+        .module-card.locked { opacity: 0.6; pointer-events: none; background-color: #f9f9f9; }
+
+        /* Reproductor de Video */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+            margin-bottom: 20px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
         /* --- ESTILOS DEL QUIZ --- */
-
-        /* Barra de progreso (Rosado Sólido) */
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            color: var(--pawwi-purple);
-            font-size: 0.9em;
-            font-weight: 700;
-        }
-        .progress-track {
-            width: 100%;
-            background-color: #EDF2F7;
-            height: 10px; /* Un poco más delgada */
-            border-radius: 10px;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background-color: var(--pawwi-pink); /* Rosado Pawwi */
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        /* Tarjetas de Opciones */
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--pawwi-purple); font-weight: 700; font-size: 0.9em; }
+        .progress-track { width: 100%; background-color: #EDF2F7; height: 8px; border-radius: 10px; margin-bottom: 25px; overflow: hidden; }
+        .progress-fill { height: 100%; background-color: var(--pawwi-pink); width: 0%; transition: width 0.4s ease; }
+        
         .option-card {
             background-color: var(--bg-card);
             color: var(--text-main);
             border: 2px solid var(--border-color);
-            padding: 18px 20px;
-            margin: 12px 0;
+            padding: 16px 20px;
+            margin: 10px 0;
             border-radius: 14px;
             text-align: left;
             font-size: 16px;
@@ -161,106 +176,118 @@
             width: 100%;
             cursor: pointer;
             transition: all 0.2s;
-            position: relative;
         }
-
-        .option-card:hover:not(:disabled) {
-            border-color: var(--pawwi-purple);
-            background-color: #FAF5FF; /* Un lila muy muy suave */
-        }
+        .option-card:hover:not(:disabled) { border-color: var(--pawwi-purple); background-color: #FAF5FF; }
+        .correct { background-color: var(--success-bg) !important; border-color: var(--success-text) !important; color: var(--success-text) !important; font-weight: 600; }
+        .incorrect { background-color: var(--error-bg) !important; border-color: var(--error-text) !important; color: var(--error-text) !important; font-weight: 600; }
         
-        /* Feedback Visual */
-        .correct { 
-            background-color: var(--success-bg) !important; 
-            border-color: var(--success-text) !important; 
-            color: var(--success-text) !important;
-            font-weight: 600;
-        }
-        .incorrect { 
-            background-color: var(--error-bg) !important; 
-            border-color: var(--error-text) !important; 
-            color: var(--error-text) !important;
-            font-weight: 600;
-        }
+        .feedback { margin-top: 20px; padding: 15px; border-radius: 12px; font-size: 0.95em; text-align: left; display: none; border-left: 5px solid; }
 
-        .feedback {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 1em;
-            line-height: 1.5;
-            text-align: left;
-            display: none;
-            /* Borde izquierdo grueso estilo "Callout" */
-            border-left-width: 5px; 
-            border-left-style: solid;
-        }
-
-        /* Iconos y Loader */
-        .badge-icon {
-            font-size: 60px;
-            display: block;
-            margin: 20px 0;
-        }
-
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--pawwi-purple);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 30px auto;
-        }
-
+        /* Utilidades */
+        .hidden { display: none !important; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--pawwi-purple); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 30px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Navigation Bar simple */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            color: var(--pawwi-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .nav-bar svg { margin-right: 5px; }
 
     </style>
 </head>
 <body>
 
     <div class="container">
+        
         <div id="screen-login">
-            <span style="font-size: 60px;">🐶</span>
-            <h1>¡Hola Pawwer!</h1>
-            <p>Bienvenido a la certificación oficial. Completa tus datos para validar tu ingreso al equipo.</p>
+            <span style="font-size: 50px;">🐶</span>
+            <h1>Certificación Pawwi</h1>
+            <p>Ingresa tus datos para acceder a los módulos de entrenamiento y la evaluación final.</p>
             
             <input type="text" id="user-name" placeholder="Nombre Completo" required>
             <input type="number" id="user-cedula" placeholder="Cédula / ID" required inputmode="numeric">
             <input type="email" id="user-email" placeholder="Correo Electrónico" required>
             <input type="tel" id="user-phone" placeholder="Teléfono Celular" required inputmode="tel">
             
-            <button class="main-btn" onclick="startQuiz()">Comenzar Examen</button>
+            <button class="main-btn" onclick="app.login()">
+                Ingresar a la Plataforma
+            </button>
             <p style="font-size: 0.75em; margin-top: 15px; color: #A0AEC0;">Tus datos son tratados según la política de privacidad de Pawwi.</p>
         </div>
 
+        <div id="screen-dashboard" class="hidden">
+            <div style="text-align: left; margin-bottom: 15px;">
+                <small style="text-transform: uppercase; font-weight: 700; color: var(--pawwi-pink);">Academia Pawwer</small>
+                <h2 style="margin-top: 5px;">Módulos de Aprendizaje</h2>
+                <p style="margin-bottom: 15px; font-size: 0.9em;">Mira todos los videos antes de presentar el examen.</p>
+            </div>
+
+            <div id="modules-container" class="module-grid">
+                </div>
+
+            <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <p style="font-size: 0.9em;">¿Ya viste todos los videos?</p>
+                <button class="main-btn" onclick="app.goToQuiz()">
+                    Presentar Examen Final 📝
+                </button>
+            </div>
+        </div>
+
+        <div id="screen-player" class="hidden">
+            <div class="nav-bar" onclick="app.showDashboard()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Volver a Módulos
+            </div>
+            
+            <h2 id="player-title" style="margin-bottom: 10px;">Título del Video</h2>
+            <div class="video-wrapper">
+                <div id="player-iframe-container"></div>
+            </div>
+            <p id="player-desc" style="font-size: 0.9em;">Mira el video completo para asegurar tu conocimiento.</p>
+            
+            <button class="main-btn secondary" onclick="app.markAsWatched()">
+                ✅ Marcar como visto y volver
+            </button>
+        </div>
+
         <div id="screen-quiz" class="hidden">
+            <div class="nav-bar" onclick="app.showDashboard()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                Volver a Módulos
+            </div>
+
             <div class="progress-header">
-                <span>Tu Progreso</span>
+                <span>Examen Final</span>
                 <span><span id="q-current">1</span> / <span id="q-total">30</span></span>
             </div>
             <div class="progress-track">
                 <div class="progress-fill" id="progress"></div>
             </div>
             
-            <h2 id="question-text">Pregunta aquí...</h2>
+            <h2 id="question-text" style="font-size: 1.1em; min-height: 60px;">Pregunta aquí...</h2>
             
-            <div id="options-container">
-                </div>
+            <div id="options-container"></div>
             
             <div id="feedback-container" class="feedback"></div>
             
-            <button id="btn-next" class="main-btn hidden" onclick="nextQuestion()">Siguiente Pregunta</button>
+            <button id="btn-next" class="main-btn hidden" onclick="app.nextQuestion()">Siguiente Pregunta</button>
         </div>
 
         <div id="screen-loading" class="hidden">
             <div class="loader"></div>
-            <h2 style="color: var(--pawwi-purple)">Enviando Respuestas...</h2>
-            <p>Estamos conectando con la base central de Pawwi.</p>
+            <h2 style="color: var(--pawwi-purple)">Procesando...</h2>
+            <p>Estamos enviando tus resultados a la base central.</p>
         </div>
 
         <div id="screen-result" class="hidden">
-            <span id="result-icon" class="badge-icon"></span>
+            <span id="result-icon" style="font-size: 60px; display:block; margin: 20px 0;"></span>
             <h1 id="result-title"></h1>
             <p id="result-message" style="font-size: 1.1em; color: var(--text-main);"></p>
             
@@ -273,333 +300,285 @@
             <p style="font-size: 0.9em; color: var(--text-light); margin-top: 20px;">
                 Copia del certificado enviada a:<br><strong>pawwipawwilead@gmail.com</strong>
             </p>
+            
+            <button class="main-btn secondary" onclick="location.reload()">Volver al Inicio</button>
         </div>
     </div>
 
     <script>
-        // --- CREDENCIALES ---
-        const EMAIL_SERVICE_ID = "service_hsecs6f"; 
-        const EMAIL_TEMPLATE_ID = "template_q0nxumd"; 
+        // ==========================================
+        // CONFIGURACIÓN Y DATOS (BACKEND MOCK)
+        // ==========================================
+        
+        const CONFIG = {
+            EMAIL_SERVICE_ID: "service_hsecs6f",
+            EMAIL_TEMPLATE_ID: "template_q0nxumd"
+        };
 
-        // BASE DE DATOS DE PREGUNTAS
-        const questions = [
-            {
-                q: "Según el módulo de Bienvenida, ¿cuál es la diferencia fundamental entre Pawwi y una guardería tradicional?",
-                options: ["Recibimos manadas grandes.", "Es una experiencia hiperlocal en hogar, sin jaulas.", "Los perros se quedan solos.", "Es solo una app de paseos."],
-                correct: 1,
-                rationale: "Pawwi es hogar, personalización y 0 jaulas."
-            },
-            {
-                q: "En el Flujo Operativo, ¿qué es lo PRIMERO que debes hacer al ingresar el perro?",
-                options: ["Darle comida.", "Grabar video de evidencia del estado.", "Salir a pasear.", "Esperar mensaje del dueño."],
-                correct: 1,
-                rationale: "El video de ingreso es obligatorio para la seguridad y transparencia."
-            },
-            {
-                q: "¿Qué sucede si tienes una emergencia personal grave durante el servicio?",
-                options: ["Salgo rápido y dejo comida.", "Lo dejo con un vecino.", "Me llevo al perro en moto.", "Notifico a Pawwi y NO abandono hasta recibir instrucciones."],
-                correct: 3,
-                rationale: "Protocolo de Cierre Unilateral: Notificar y nunca abandonar."
-            },
-            {
-                q: "¿Qué condición es INDISPENSABLE para aprobar tu espacio (Hogar)?",
-                options: ["Tener patio con pasto.", "Puertas, ventanas y balcones asegurados (mallas/cerrados).", "Tener juguetes propios.", "Cámaras en la sala."],
-                correct: 1,
-                rationale: "La prevención de fugas es el requisito de seguridad #1."
-            },
-            {
-                q: "Ante un accidente MODERADO (herida profunda, cojera), ¿cuál es el paso correcto?",
-                options: ["Esperar una hora.", "Curarlo con remedios caseros.", "Notificar a soporte inmediato y llevar al veterinario autorizado.", "Llamar primero al dueño."],
-                correct: 2,
-                rationale: "Prioridad: Salud del perro y notificación a la central."
-            },
-            {
-                q: "¿Qué cubre el Fondo de Asistencia Pawwi?",
-                options: ["Daños a mis muebles.", "Eventos que afecten la integridad física del perro.", "Pérdida de mis objetos.", "Enfermedades preexistentes."],
-                correct: 1,
-                rationale: "El fondo protege al ser vivo (el perro) ante accidentes."
-            },
-            {
-                q: "¿Cuál es la consecuencia de un 'No Show' (no presentarse al servicio)?",
-                options: ["Falta leve.", "Multa pequeña.", "Terminación inmediata del contrato y bloqueo.", "Nada si aviso después."],
-                correct: 2,
-                rationale: "Es una falta gravísima que rompe la confianza."
-            },
-            {
-                q: "¿Cuántas actualizaciones (fotos/videos) son OBLIGATORIAS?",
-                options: ["Solo una al final.", "Una cada 10 minutos.", "Video inicio, 1 intermedia y reporte final.", "Ninguna si está bien."],
-                correct: 2,
-                rationale: "Inicio, durante y final. Es la trazabilidad mínima."
-            },
-            {
-                q: "Si un perro muestra agresividad, ¿qué haces primero?",
-                options: ["Gritarle fuerte.", "Evaluar herida, notificar a soporte y aislar con calma.", "Sacarlo a la calle.", "Juntarlo con otro perro."],
-                correct: 1,
-                rationale: "Seguridad primero, calma y reporte. Nunca violencia."
-            },
-            {
-                q: "¿Cuándo se realizan los pagos a los Pawwers?",
-                options: ["En efectivo al entregar.", "Mensual día 30.", "Todos los viernes antes de las 3:00 PM.", "Cobro directo por Nequi."],
-                correct: 2,
-                rationale: "Corte semanal, pago los viernes."
-            },
-            // FASE 2 - PREGUNTAS AVANZADAS
-            {
-                q: "Para reprogramar un servicio sin penalidad, ¿con cuánta antelación debes avisar?",
-                options: ["Cuando quiera.", "Más de 8 horas.", "1 hora antes.", "Después del servicio."],
-                correct: 1,
-                rationale: "8 horas permiten la logística de reasignación."
-            },
-            {
-                q: "¿Está permitido recibir visitas durante el servicio?",
-                options: ["Sí, familiares.", "Si el perro está aislado.", "No, totalmente prohibido.", "Si ayudan a cuidar."],
-                correct: 2,
-                rationale: "Cero distracciones y cero extraños no verificados."
-            },
-            {
-                q: "¿Cuál es el costo extra por recogida y entrega (transporte)?",
-                options: ["$2.000", "$5.000 por trayecto", "$10.000", "Gratis"],
-                correct: 1,
-                rationale: "Tarifa oficial establecida en el tarifario."
-            },
-            {
-                q: "¿Se puede soltar la correa en parques?",
-                options: ["Sí en parques cerrados.", "Si el dueño deja.", "Bajo NINGUNA circunstancia.", "Si no hay perros."],
-                correct: 2,
-                rationale: "El riesgo de fuga o pelea es inaceptable. Siempre con correa."
-            },
-            {
-                q: "¿Puedes dar snacks de tu despensa al perro?",
-                options: ["Sí, fruta.", "No, prohibido sin autorización (riesgo alergia).", "Sí, un poquito.", "Si no trajo comida."],
-                correct: 1,
-                rationale: "Solo lo autorizado por el dueño para evitar alergias."
-            },
-            {
-                q: "Si el perro se escapa, ¿qué haces primero?",
-                options: ["Esperar 10 min.", "Publicar en redes.", "Detener todo, buscar y llamar a Soporte YA.", "Llamar al dueño llorando."],
-                correct: 2,
-                rationale: "Acción inmediata y comunicación con central."
-            },
-            {
-                q: "Mensaje clave a soporte si hay un intruso:",
-                options: ["Ayuda.", "'Emergencia en domicilio. Posible intruso. Estoy con el perro seguro'.", "Escuché algo.", "Llamen policía."],
-                correct: 1,
-                rationale: "Mensaje codificado que confirma seguridad del perro."
-            },
-            {
-                q: "Ante un sismo, ¿qué haces con el perro?",
-                options: ["Abrir puerta.", "Esconderse bajo cama.", "Asegurar con correa/cargar y zona segura.", "Dejarlo en balcón."],
-                correct: 2,
-                rationale: "Evitar fuga por pánico asegurándolo físicamente."
-            },
-            {
-                q: "Síntomas de alergia grave:",
-                options: ["Hambre.", "Ladridos.", "Hinchazón hocico, ronchas, ahogo.", "Cojera."],
-                correct: 2,
-                rationale: "Signos de anafilaxia requieren vet urgente."
-            },
-            {
-                q: "¿Qué pasa si te niegas a una visita aleatoria de Pawwi?",
-                options: ["Se reprograma.", "Multa.", "Suspensión inmediata (falta de transparencia).", "Nada."],
-                correct: 2,
-                rationale: "La transparencia es un pilar no negociable."
-            },
-            {
-                q: "Documentos para el Fondo de Asistencia:",
-                options: ["Solo texto.", "Descripción, Fotos/Video, Historia Clínica, Factura.", "Factura comida.", "Testimonio vecino."],
-                correct: 1,
-                rationale: "Evidencia del hecho + evidencia del costo."
-            },
-            {
-                q: "Tiempo respuesta Fondo de Asistencia:",
-                options: ["24h.", "5 días hábiles.", "1 mes.", "Inmediato."],
-                correct: 1,
-                rationale: "Plazo administrativo estándar."
-            },
-            {
-                q: "Evidencia final obligatoria:",
-                options: ["Selfie.", "Video del perro y pertenencias al entregar.", "Texto 'listo'.", "Foto propina."],
-                correct: 1,
-                rationale: "Cierre de responsabilidad sobre estado y objetos."
-            },
-            {
-                q: "¿Qué hacer con cables eléctricos?",
-                options: ["Dejarlos.", "Cubrirlos/Asegurarlos.", "Poner picante.", "Desconectar noche."],
-                correct: 1,
-                rationale: "Riesgo alto de electrocución."
-            },
-            {
-                q: "Protocolo para aceptar servicio en el grupo:",
-                options: ["Llamar dueño.", "Responder 'Lo tomo'.", "Dar Like.", "Ir a la casa."],
-                correct: 1,
-                rationale: "Asignación rápida y ordenada."
-            },
-            {
-                q: "¿Qué indicadores de calidad evalúa Pawwi?",
-                options: ["Marca comida.", "Puntualidad, reportes, limpieza, amor.", "Tamaño TV.", "Seguidores."],
-                correct: 1,
-                rationale: "Evaluación 360 del servicio."
-            },
-            {
-                q: "Anticipación para recoger al perro:",
-                options: ["Hora exacta.", "5 minutos antes.", "Cuando pueda.", "30 min antes."],
-                correct: 1,
-                rationale: "Puntualidad Pawwi."
-            },
-            {
-                q: "Si ingiere objeto extraño:",
-                options: ["Vomitar.", "Verificar estado, identificar objeto, foto para vet.", "Dar leche.", "Esperar."],
-                correct: 1,
-                rationale: "Identificar QUÉ comió es vital para el tratamiento."
-            },
-            {
-                q: "Duración mínima del servicio:",
-                options: ["30 min.", "1 hora.", "2 horas.", "Medio día."],
-                correct: 2,
-                rationale: "Viabilidad operativa."
-            },
-            {
-                q: "¿Tu roomie puede cuidar al perro si sales?",
-                options: ["Sí.", "No, delegar está prohibido.", "Si aviso.", "Ratos cortos."],
-                correct: 1,
-                rationale: "El Pawwer certificado eres tú, no es transferible."
-            }
+        // Base de datos de Módulos de Video (ACTUALIZADA)
+        const MODULES = [
+            { id: 1, title: "1. Bienvenida Pawwi DayCare", url: "https://youtube.com/shorts/ZNHrozxD3gc?si=ik-ofwVsyPDBIkxM", duration: "1 min" },
+            { id: 2, title: "2. Playbook Daycare", url: "https://youtube.com/shorts/ZDCJtDrHxoc?si=SG48dLG-iTH5vt-Y", duration: "1 min" },
+            { id: 3, title: "3. Flujo Operativo DayCare", url: "https://youtube.com/shorts/cOCOE-5M88k?si=_sY2yXQqjRypnIqV", duration: "1 min" },
+            { id: 4, title: "4. Adaptar el Hogar", url: "https://youtube.com/shorts/5vbilzjl96U?si=pEZAxHG4pGi3IvOf", duration: "1 min" },
+            { id: 5, title: "5. Comportamiento Canino", url: "https://youtu.be/h0_NBxeerB0?si=PYZ2i7eum-z-c3ZM", duration: "Video Largo" },
+            { id: 6, title: "6. Guía de emergencias", url: "https://youtu.be/8dCHJOpEx_c?si=aDvU3o_C2ibeCAyW", duration: "Video Largo" },
+            { id: 7, title: "7. Aspectos Legales", url: "https://youtu.be/5AP7ewYdWMU", duration: "Video Largo" }, 
+            { id: 8, title: "7.1 Legal: Normativa", url: "https://youtu.be/xvbWRHk5BYo", duration: "Video Largo" }
         ];
 
-        let currentQuestion = 0;
-        let score = 0;
-        let userData = {};
+        // Base de datos de Preguntas
+        const QUESTIONS = [
+            { q: "Según el módulo de Bienvenida, ¿cuál es la diferencia fundamental entre Pawwi y una guardería tradicional?", options: ["Recibimos manadas grandes.", "Es una experiencia hiperlocal en hogar, sin jaulas.", "Los perros se quedan solos.", "Es solo una app de paseos."], correct: 1, rationale: "Pawwi es hogar, personalización y 0 jaulas." },
+            { q: "En el Flujo Operativo, ¿qué es lo PRIMERO que debes hacer al ingresar el perro?", options: ["Darle comida.", "Grabar video de evidencia del estado.", "Salir a pasear.", "Esperar mensaje del dueño."], correct: 1, rationale: "El video de ingreso es obligatorio para la seguridad y transparencia." },
+            { q: "¿Qué sucede si tienes una emergencia personal grave durante el servicio?", options: ["Salgo rápido y dejo comida.", "Lo dejo con un vecino.", "Me llevo al perro en moto.", "Notifico a Pawwi y NO abandono hasta recibir instrucciones."], correct: 3, rationale: "Protocolo de Cierre Unilateral: Notificar y nunca abandonar." },
+            { q: "¿Qué condición es INDISPENSABLE para aprobar tu espacio (Hogar)?", options: ["Tener patio con pasto.", "Puertas, ventanas y balcones asegurados (mallas/cerrados).", "Tener juguetes propios.", "Cámaras en la sala."], correct: 1, rationale: "La prevención de fugas es el requisito de seguridad #1." },
+            { q: "Ante un accidente MODERADO (herida profunda, cojera), ¿cuál es el paso correcto?", options: ["Esperar una hora.", "Curarlo con remedios caseros.", "Notificar a soporte inmediato y llevar al veterinario autorizado.", "Llamar primero al dueño."], correct: 2, rationale: "Prioridad: Salud del perro y notificación a la central." },
+            { q: "¿Qué cubre el Fondo de Asistencia Pawwi?", options: ["Daños a mis muebles.", "Eventos que afecten la integridad física del perro.", "Pérdida de mis objetos.", "Enfermedades preexistentes."], correct: 1, rationale: "El fondo protege al ser vivo (el perro) ante accidentes." },
+            { q: "¿Cuál es la consecuencia de un 'No Show' (no presentarse al servicio)?", options: ["Falta leve.", "Multa pequeña.", "Terminación inmediata del contrato y bloqueo.", "Nada si aviso después."], correct: 2, rationale: "Es una falta gravísima que rompe la confianza." },
+            { q: "¿Cuántas actualizaciones (fotos/videos) son OBLIGATORIAS?", options: ["Solo una al final.", "Una cada 10 minutos.", "Video inicio, 1 intermedia y reporte final.", "Ninguna si está bien."], correct: 2, rationale: "Inicio, durante y final. Es la trazabilidad mínima." },
+            { q: "Si un perro muestra agresividad, ¿qué haces primero?", options: ["Gritarle fuerte.", "Evaluar herida, notificar a soporte y aislar con calma.", "Sacarlo a la calle.", "Juntarlo con otro perro."], correct: 1, rationale: "Seguridad primero, calma y reporte. Nunca violencia." },
+            { q: "¿Cuándo se realizan los pagos a los Pawwers?", options: ["En efectivo al entregar.", "Mensual día 30.", "Todos los viernes antes de las 3:00 PM.", "Cobro directo por Nequi."], correct: 2, rationale: "Corte semanal, pago los viernes." },
+            // FASE 2
+            { q: "Para reprogramar un servicio sin penalidad, ¿con cuánta antelación debes avisar?", options: ["Cuando quiera.", "Más de 8 horas.", "1 hora antes.", "Después del servicio."], correct: 1, rationale: "8 horas permiten la logística de reasignación." },
+            { q: "¿Está permitido recibir visitas durante el servicio?", options: ["Sí, familiares.", "Si el perro está aislado.", "No, totalmente prohibido.", "Si ayudan a cuidar."], correct: 2, rationale: "Cero distracciones y cero extraños no verificados." },
+            { q: "¿Cuál es el costo extra por recogida y entrega (transporte)?", options: ["$2.000", "$5.000 por trayecto", "$10.000", "Gratis"], correct: 1, rationale: "Tarifa oficial establecida en el tarifario." },
+            { q: "¿Se puede soltar la correa en parques?", options: ["Sí en parques cerrados.", "Si el dueño deja.", "Bajo NINGUNA circunstancia.", "Si no hay perros."], correct: 2, rationale: "El riesgo de fuga o pelea es inaceptable. Siempre con correa." },
+            { q: "¿Puedes dar snacks de tu despensa al perro?", options: ["Sí, fruta.", "No, prohibido sin autorización (riesgo alergia).", "Sí, un poquito.", "Si no trajo comida."], correct: 1, rationale: "Solo lo autorizado por el dueño para evitar alergias." },
+            { q: "Si el perro se escapa, ¿qué haces primero?", options: ["Esperar 10 min.", "Publicar en redes.", "Detener todo, buscar y llamar a Soporte YA.", "Llamar al dueño llorando."], correct: 2, rationale: "Acción inmediata y comunicación con central." },
+            { q: "Mensaje clave a soporte si hay un intruso:", options: ["Ayuda.", "'Emergencia en domicilio. Posible intruso. Estoy con el perro seguro'.", "Escuché algo.", "Llamen policía."], correct: 1, rationale: "Mensaje codificado que confirma seguridad del perro." },
+            { q: "Ante un sismo, ¿qué haces con el perro?", options: ["Abrir puerta.", "Esconderse bajo cama.", "Asegurar con correa/cargar y zona segura.", "Dejarlo en balcón."], correct: 2, rationale: "Evitar fuga por pánico asegurándolo físicamente." },
+            { q: "Síntomas de alergia grave:", options: ["Hambre.", "Ladridos.", "Hinchazón hocico, ronchas, ahogo.", "Cojera."], correct: 2, rationale: "Signos de anafilaxia requieren vet urgente." },
+            { q: "¿Qué pasa si te niegas a una visita aleatoria de Pawwi?", options: ["Se reprograma.", "Multa.", "Suspensión inmediata (falta de transparencia).", "Nada."], correct: 2, rationale: "La transparencia es un pilar no negociable." },
+            { q: "Documentos para el Fondo de Asistencia:", options: ["Solo texto.", "Descripción, Fotos/Video, Historia Clínica, Factura.", "Factura comida.", "Testimonio vecino."], correct: 1, rationale: "Evidencia del hecho + evidencia del costo." },
+            { q: "Tiempo respuesta Fondo de Asistencia:", options: ["24h.", "5 días hábiles.", "1 mes.", "Inmediato."], correct: 1, rationale: "Plazo administrativo estándar." },
+            { q: "Evidencia final obligatoria:", options: ["Selfie.", "Video del perro y pertenencias al entregar.", "Texto 'listo'.", "Foto propina."], correct: 1, rationale: "Cierre de responsabilidad sobre estado y objetos." },
+            { q: "¿Qué hacer con cables eléctricos?", options: ["Dejarlos.", "Cubrirlos/Asegurarlos.", "Poner picante.", "Desconectar noche."], correct: 1, rationale: "Riesgo alto de electrocución." },
+            { q: "Protocolo para aceptar servicio en el grupo:", options: ["Llamar dueño.", "Responder 'Lo tomo'.", "Dar Like.", "Ir a la casa."], correct: 1, rationale: "Asignación rápida y ordenada." },
+            { q: "¿Qué indicadores de calidad evalúa Pawwi?", options: ["Marca comida.", "Puntualidad, reportes, limpieza, amor.", "Tamaño TV.", "Seguidores."], correct: 1, rationale: "Evaluación 360 del servicio." },
+            { q: "Anticipación para recoger al perro:", options: ["Hora exacta.", "5 minutos antes.", "Cuando pueda.", "30 min antes."], correct: 1, rationale: "Puntualidad Pawwi." },
+            { q: "Si ingiere objeto extraño:", options: ["Vomitar.", "Verificar estado, identificar objeto, foto para vet.", "Dar leche.", "Esperar."], correct: 1, rationale: "Identificar QUÉ comió es vital para el tratamiento." },
+            { q: "Duración mínima del servicio:", options: ["30 min.", "1 hora.", "2 horas.", "Medio día."], correct: 2, rationale: "Viabilidad operativa." },
+            { q: "¿Tu roomie puede cuidar al perro si sales?", options: ["Sí.", "No, delegar está prohibido.", "Si aviso.", "Ratos cortos."], correct: 1, rationale: "El Pawwer certificado eres tú, no es transferible." }
+        ];
 
-        function startQuiz() {
-            const name = document.getElementById('user-name').value.trim();
-            const cedula = document.getElementById('user-cedula').value.trim();
-            const email = document.getElementById('user-email').value.trim();
-            const phone = document.getElementById('user-phone').value.trim();
+        // ==========================================
+        // LÓGICA DE LA APLICACIÓN (CONTROLLER)
+        // ==========================================
 
-            if(!name || !cedula || !email || !phone) {
-                alert("✋ Por favor completa todos tus datos para poder iniciar el examen.");
-                return;
-            }
+        const app = {
+            userData: {},
+            currentQuestion: 0,
+            score: 0,
+            currentModuleIndex: null,
 
-            userData = { name, cedula, email, phone };
-            
-            document.getElementById('screen-login').classList.add('hidden');
-            document.getElementById('screen-quiz').classList.remove('hidden');
-            
-            window.scrollTo(0, 0);
-            loadQuestion();
-        }
+            // 1. Manejo del Login
+            login: function() {
+                const name = document.getElementById('user-name').value.trim();
+                const cedula = document.getElementById('user-cedula').value.trim();
+                const email = document.getElementById('user-email').value.trim();
+                const phone = document.getElementById('user-phone').value.trim();
 
-        function loadQuestion() {
-            const q = questions[currentQuestion];
-            document.getElementById('q-current').innerText = currentQuestion + 1;
-            document.getElementById('q-total').innerText = questions.length;
-            document.getElementById('question-text').innerText = q.q;
-            
-            const percent = ((currentQuestion) / questions.length) * 100;
-            document.getElementById('progress').style.width = percent + "%";
+                if(!name || !cedula || !email || !phone) {
+                    alert("✋ Por favor completa todos tus datos para iniciar.");
+                    return;
+                }
 
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
-            document.getElementById('feedback-container').style.display = 'none';
-            document.getElementById('btn-next').classList.add('hidden');
+                this.userData = { name, cedula, email, phone };
+                this.navigate('screen-login', 'screen-dashboard');
+                this.renderModules();
+            },
 
-            q.options.forEach((opt, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'option-card';
-                btn.innerText = opt;
-                btn.onclick = () => checkAnswer(index, btn);
-                container.appendChild(btn);
-            });
-        }
+            // 2. Renderizado de Módulos (Videos)
+            renderModules: function() {
+                const container = document.getElementById('modules-container');
+                container.innerHTML = '';
 
-        function checkAnswer(selectedIndex, btnElement) {
-            const allBtns = document.querySelectorAll('.option-card');
-            allBtns.forEach(btn => btn.disabled = true);
+                MODULES.forEach((mod, index) => {
+                    const isPending = mod.url === "";
+                    const statusIcon = isPending ? '🔒' : '▶️';
+                    const cssClass = isPending ? 'module-card locked' : 'module-card';
+                    
+                    const card = document.createElement('div');
+                    card.className = cssClass;
+                    card.onclick = () => {
+                        if(!isPending) this.playVideo(index);
+                    };
 
-            const q = questions[currentQuestion];
-            const feedback = document.getElementById('feedback-container');
-            
-            if(selectedIndex === q.correct) {
-                btnElement.classList.add('correct');
-                score++;
-                feedback.innerHTML = `<strong>✅ ¡Correcto!</strong><br>${q.rationale}`;
-                feedback.style.borderColor = 'var(--success-text)';
-                feedback.style.backgroundColor = 'var(--success-bg)';
-                feedback.style.color = 'var(--success-text)';
-            } else {
-                btnElement.classList.add('incorrect');
-                allBtns[q.correct].classList.add('correct');
-                feedback.innerHTML = `<strong>❌ Incorrecto.</strong><br>${q.rationale}`;
-                feedback.style.borderColor = 'var(--error-text)';
-                feedback.style.backgroundColor = 'var(--error-bg)';
-                feedback.style.color = 'var(--error-text)';
-            }
-
-            feedback.style.display = 'block';
-            document.getElementById('btn-next').classList.remove('hidden');
-            
-             document.getElementById('btn-next').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function nextQuestion() {
-            currentQuestion++;
-            if(currentQuestion < questions.length) {
-                loadQuestion();
-                window.scrollTo(0, 0); 
-            } else {
-                finishQuiz();
-            }
-        }
-
-        function finishQuiz() {
-            document.getElementById('screen-quiz').classList.add('hidden');
-            document.getElementById('screen-loading').classList.remove('hidden');
-            window.scrollTo(0, 0);
-
-            const passed = score >= 24; 
-            const status = passed ? "APROBADO" : "REPROBADO";
-
-            const templateParams = {
-                name: userData.name,
-                cedula: userData.cedula,
-                phone: userData.phone,
-                email: userData.email,
-                score: score,
-                total: questions.length,
-                status: status
-            };
-
-            emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams)
-                .then(function(response) {
-                    showResult(passed);
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    alert("⚠️ Error de conexión. Por favor toma captura de pantalla.");
-                    showResult(passed);
+                    card.innerHTML = `
+                        <div class="module-info">
+                            <h3>${mod.title}</h3>
+                            <small>${isPending ? 'Próximamente' : mod.duration}</small>
+                        </div>
+                        <div class="module-status">${statusIcon}</div>
+                    `;
+                    container.appendChild(card);
                 });
-        }
+            },
 
-        function showResult(passed) {
-            document.getElementById('screen-loading').classList.add('hidden');
-            const resultScreen = document.getElementById('screen-result');
-            resultScreen.classList.remove('hidden');
-            window.scrollTo(0, 0);
-            
-            document.getElementById('final-score').innerText = score;
+            // 3. Reproductor de Video (Extractor de ID de Youtube)
+            playVideo: function(index) {
+                this.currentModuleIndex = index;
+                const mod = MODULES[index];
+                
+                // Extraer ID de video (Soporta Shorts y URLs normales)
+                let videoId = "";
+                const url = mod.url;
+                
+                if (url.includes("shorts/")) {
+                    videoId = url.split("shorts/")[1].split("?")[0];
+                } else if (url.includes("v=")) {
+                    videoId = url.split("v=")[1].split("&")[0];
+                } else if (url.includes("youtu.be/")) {
+                    videoId = url.split("youtu.be/")[1].split("?")[0];
+                }
 
-            if(passed) {
-                document.getElementById('result-icon').innerText = "🎉";
-                document.getElementById('result-title').innerText = "¡Bienvenido/a Pawwer!";
-                document.getElementById('result-message').innerText = "Has aprobado tu certificación con éxito.";
-                document.querySelector('.container').style.borderTop = "6px solid var(--pawwi-purple)";
-            } else {
-                document.getElementById('result-icon').innerText = "📚";
-                document.getElementById('result-title').innerText = "¡Sigue intentando!";
-                document.getElementById('result-message').innerText = "Repasa los videos del Playbook y vuelve a presentar el examen.";
-                document.querySelector('.container').style.borderTop = "6px solid var(--pawwi-pink)";
+                const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1`;
+
+                document.getElementById('player-title').innerText = mod.title;
+                document.getElementById('player-iframe-container').innerHTML = `
+                    <iframe src="${embedUrl}" title="${mod.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                `;
+                
+                this.navigate('screen-dashboard', 'screen-player');
+            },
+
+            markAsWatched: function() {
+                // Visualmente marcamos el video (En una app real guardaríamos esto en DB)
+                const cards = document.querySelectorAll('.module-card');
+                if(this.currentModuleIndex !== null && cards[this.currentModuleIndex]) {
+                    cards[this.currentModuleIndex].querySelector('.module-status').innerHTML = '✅';
+                    cards[this.currentModuleIndex].classList.add('watched');
+                }
+                this.showDashboard();
+            },
+
+            showDashboard: function() {
+                document.getElementById('player-iframe-container').innerHTML = ''; // Limpiar iframe para detener video
+                document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
+                document.getElementById('screen-dashboard').classList.remove('hidden');
+            },
+
+            // 4. Lógica del Quiz
+            goToQuiz: function() {
+                if(!confirm("¿Estás seguro que viste todos los videos? El examen evaluará lo aprendido.")) return;
+                this.navigate('screen-dashboard', 'screen-quiz');
+                this.loadQuestion();
+            },
+
+            loadQuestion: function() {
+                const q = QUESTIONS[this.currentQuestion];
+                document.getElementById('q-current').innerText = this.currentQuestion + 1;
+                document.getElementById('q-total').innerText = QUESTIONS.length;
+                document.getElementById('question-text').innerText = q.q;
+                
+                const percent = ((this.currentQuestion) / QUESTIONS.length) * 100;
+                document.getElementById('progress').style.width = percent + "%";
+
+                const container = document.getElementById('options-container');
+                container.innerHTML = '';
+                document.getElementById('feedback-container').style.display = 'none';
+                document.getElementById('btn-next').classList.add('hidden');
+
+                q.options.forEach((opt, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-card';
+                    btn.innerText = opt;
+                    btn.onclick = () => this.checkAnswer(index, btn);
+                    container.appendChild(btn);
+                });
+            },
+
+            checkAnswer: function(selectedIndex, btnElement) {
+                const allBtns = document.querySelectorAll('.option-card');
+                allBtns.forEach(btn => btn.disabled = true);
+
+                const q = QUESTIONS[this.currentQuestion];
+                const feedback = document.getElementById('feedback-container');
+                
+                if(selectedIndex === q.correct) {
+                    btnElement.classList.add('correct');
+                    this.score++;
+                    feedback.innerHTML = `<strong>✅ ¡Correcto!</strong><br>${q.rationale}`;
+                    feedback.style.borderColor = 'var(--success-text)';
+                    feedback.style.backgroundColor = 'var(--success-bg)';
+                    feedback.style.color = 'var(--success-text)';
+                } else {
+                    btnElement.classList.add('incorrect');
+                    allBtns[q.correct].classList.add('correct');
+                    feedback.innerHTML = `<strong>❌ Incorrecto.</strong><br>${q.rationale}`;
+                    feedback.style.borderColor = 'var(--error-text)';
+                    feedback.style.backgroundColor = 'var(--error-bg)';
+                    feedback.style.color = 'var(--error-text)';
+                }
+
+                feedback.style.display = 'block';
+                document.getElementById('btn-next').classList.remove('hidden');
+                document.getElementById('btn-next').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            },
+
+            nextQuestion: function() {
+                this.currentQuestion++;
+                if(this.currentQuestion < QUESTIONS.length) {
+                    this.loadQuestion();
+                    window.scrollTo(0, 0); 
+                } else {
+                    this.finishQuiz();
+                }
+            },
+
+            // 5. Finalización y Envío
+            finishQuiz: function() {
+                this.navigate('screen-quiz', 'screen-loading');
+                
+                const passed = this.score >= 24; 
+                const status = passed ? "APROBADO" : "REPROBADO";
+
+                const templateParams = {
+                    name: this.userData.name,
+                    cedula: this.userData.cedula,
+                    phone: this.userData.phone,
+                    email: this.userData.email,
+                    score: this.score,
+                    total: QUESTIONS.length,
+                    status: status
+                };
+
+                emailjs.send(CONFIG.EMAIL_SERVICE_ID, CONFIG.EMAIL_TEMPLATE_ID, templateParams)
+                    .then(() => {
+                        this.showResult(passed);
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                        alert("⚠️ Error de conexión. Por favor toma captura de pantalla.");
+                        this.showResult(passed);
+                    });
+            },
+
+            showResult: function(passed) {
+                this.navigate('screen-loading', 'screen-result');
+                document.getElementById('final-score').innerText = this.score;
+
+                if(passed) {
+                    document.getElementById('result-icon').innerText = "🎉";
+                    document.getElementById('result-title').innerText = "¡Bienvenido/a Pawwer!";
+                    document.getElementById('result-message').innerText = "Has aprobado tu certificación con éxito.";
+                    document.querySelector('.container').style.borderTop = "6px solid var(--pawwi-purple)";
+                } else {
+                    document.getElementById('result-icon').innerText = "📚";
+                    document.getElementById('result-title').innerText = "¡Sigue intentando!";
+                    document.getElementById('result-message').innerText = "Repasa los videos y vuelve a presentar el examen.";
+                    document.querySelector('.container').style.borderTop = "6px solid var(--pawwi-pink)";
+                }
+            },
+
+            // Helper de navegación
+            navigate: function(fromId, toId) {
+                document.getElementById(fromId).classList.add('hidden');
+                document.getElementById(toId).classList.remove('hidden');
+                window.scrollTo(0,0);
             }
-        }
+        };
+
     </script>
 </body>
 </html>
